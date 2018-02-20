@@ -79,10 +79,87 @@ namespace KataCoffeeMachineTests
         [Test]
         public void Give_A_Hot_Tea_With_Two_Sugars()
         {
-            var coffeMachine = new CoffeeMachine();
+            var coffeeMachine = new CoffeeMachine();
             var order = new Order(DrinksAvailable.Tea, 2, 0.6, true);
-            Check.That(coffeMachine.GetCodeToSend(order)).IsEqualTo("Th:2:0");
+            Check.That(coffeeMachine.GetCodeToSend(order)).IsEqualTo("Th:2:0");
         }
 
+        // Fourth Iteration
+
+        [Test]
+        public void Give_The_Number_Of_Coffee_Sell()
+        {
+            var coffeeMachine = new CoffeeMachine();
+
+            var order = new Order(DrinksAvailable.Coffee, 1, 0.6, true);
+            var order1 = new Order(DrinksAvailable.Coffee, 1, 0.6, true);
+            var order2= new Order(DrinksAvailable.Coffee, 1, 0.6, true);
+            coffeeMachine.GetCodeToSend(order);
+            coffeeMachine.GetCodeToSend(order1);
+            coffeeMachine.GetCodeToSend(order2);
+            Check.That(coffeeMachine.GetNumberSell(DrinksAvailable.Coffee)).IsEqualTo("3");
+        }
+
+        [Test]
+        public void Give_The_Number_Of_tea_Sell()
+        {
+            var coffeeMachine = new CoffeeMachine();
+
+            var order = new Order(DrinksAvailable.Tea, 1, 0.6, true);
+            var order1 = new Order(DrinksAvailable.Chocolate, 1, 0.6, true);
+            var order2 = new Order(DrinksAvailable.Tea, 1, 0.6, true);
+            coffeeMachine.GetCodeToSend(order);
+            coffeeMachine.GetCodeToSend(order1);
+            coffeeMachine.GetCodeToSend(order2);
+            Check.That(coffeeMachine.GetNumberSell(DrinksAvailable.Tea)).IsEqualTo("2");
+        }
+
+        [Test]
+        public void Give_The_Number_Of_Sells()
+        {
+            var coffeeMachine = new CoffeeMachine();
+
+            var order = new Order(DrinksAvailable.Tea, 1, 0.6, true);
+            var order1 = new Order(DrinksAvailable.Chocolate, 1, 0.6, true);
+            var order3 = new Order(DrinksAvailable.Tea, 1, 0.6, true);
+            var order4 = new Order(DrinksAvailable.Chocolate, 1, 0.6, true);
+            var order5 = new Order(DrinksAvailable.Orange, 1, 0.6, true);
+            var order6 = new Order(DrinksAvailable.Orange, 1, 0.6, true);
+            var order7 = new Order(DrinksAvailable.Coffee, 1, 0.6, true);
+            var order2 = new Order(DrinksAvailable.Tea, 1, 0.6, true);
+            coffeeMachine.GetCodeToSend(order);
+            coffeeMachine.GetCodeToSend(order1);
+            coffeeMachine.GetCodeToSend(order2);
+            coffeeMachine.GetCodeToSend(order3);
+            coffeeMachine.GetCodeToSend(order4);
+            coffeeMachine.GetCodeToSend(order5);
+            coffeeMachine.GetCodeToSend(order6);
+            coffeeMachine.GetCodeToSend(order7);
+            Check.That(coffeeMachine.GetGlobalSells()).IsEqualTo("Chocolate: 2 Coffee: 1 Orange: 2 Tea: 3 ");
+        }
+
+        [Test]
+        public void Give_The_Benefits()
+        {
+            var coffeeMachine = new CoffeeMachine();
+
+            var order = new Order(DrinksAvailable.Tea, 1, 0.6, true);
+            var order1 = new Order(DrinksAvailable.Chocolate, 1, 0.6, true);
+            var order3 = new Order(DrinksAvailable.Tea, 1, 0.6, true);
+            var order4 = new Order(DrinksAvailable.Chocolate, 1, 0.6, true);
+            var order5 = new Order(DrinksAvailable.Orange, 1, 0.6, true);
+            var order6 = new Order(DrinksAvailable.Orange, 1, 0.6, true);
+            var order7 = new Order(DrinksAvailable.Coffee, 1, 0.6, true);
+            var order2 = new Order(DrinksAvailable.Tea, 1, 0.6, true);
+            coffeeMachine.GetCodeToSend(order);
+            coffeeMachine.GetCodeToSend(order1);
+            coffeeMachine.GetCodeToSend(order2);
+            coffeeMachine.GetCodeToSend(order3);
+            coffeeMachine.GetCodeToSend(order4);
+            coffeeMachine.GetCodeToSend(order5);
+            coffeeMachine.GetCodeToSend(order6);
+            coffeeMachine.GetCodeToSend(order7);
+            Check.That(coffeeMachine.GetBenefits()).IsEqualTo("4");
+        }
     }
 }
