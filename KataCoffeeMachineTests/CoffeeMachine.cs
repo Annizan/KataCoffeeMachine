@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace KataCoffeeMachineTests
@@ -18,6 +19,11 @@ namespace KataCoffeeMachineTests
             code.Append(order.NbSugar > 0 ? $"{order.NbSugar}:0" : ":");
             
             return code.ToString();
+        }
+
+        public string GetMessageToSend(string message)
+        {
+            return $"M:{message}";
         }
     }
 }

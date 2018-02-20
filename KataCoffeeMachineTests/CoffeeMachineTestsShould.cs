@@ -25,5 +25,12 @@ namespace KataCoffeeMachineTests
             CoffeeMachine coffeeMachine = new CoffeeMachine();
             Check.That(coffeeMachine.GetCodeToSend(new Order(DrinksAvailable.Coffee, 2))).IsEqualTo("C:2:0");
         }
+
+        [Test]
+        public void Give_The_Message_To_Show_To_The_Customer()
+        {
+            CoffeeMachine coffeeMachine = new CoffeeMachine();
+            Check.That(coffeeMachine.GetMessageToSend("Cela ne fonctionnera pas!")).IsEqualTo("M:Cela ne fonctionnera pas!");
+        }
     }
 }
