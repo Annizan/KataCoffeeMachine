@@ -1,9 +1,12 @@
 ﻿namespace KataCoffeeMachineTests
 {
-    internal class Coffee : Drink
+    public class Coffee : Drink
     {
-        public Coffee() 
+        public Coffee()
         {
+            Code = 'C';
+            Price = 0.6;
+            DrinkType = DrinksAvailable.Coffee;
         }
     }
 }
