@@ -69,7 +69,7 @@ namespace KataCoffeeMachineTests
         }
 
         [Test]
-        public void Give_A_Hot_Coffee_With_One_Sugar()
+        public void Give_A_Extra_Hot_Coffee_With_One_Sugar()
         {
             CoffeeMachine coffeeMachine = new CoffeeMachine();
             var order = new Order(DrinksAvailable.Coffee, 1, 0.6, true);
@@ -77,7 +77,7 @@ namespace KataCoffeeMachineTests
         }
 
         [Test]
-        public void Give_A_Hot_Tea_With_Two_Sugars()
+        public void Give_A_Extra_Hot_Tea_With_Two_Sugars()
         {
             var coffeeMachine = new CoffeeMachine();
             var order = new Order(DrinksAvailable.Tea, 2, 0.6, true);

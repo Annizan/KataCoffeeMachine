@@ -2,11 +2,6 @@
 {
     public class Order
     {
-        private DrinksAvailable coffee;
-        private int v1;
-        private double v2;
-        private bool v3;
-
         public Order(DrinksAvailable drink, int nbSugar)
         {
             this.Drink = drink;
