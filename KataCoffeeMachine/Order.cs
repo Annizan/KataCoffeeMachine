@@ -2,23 +2,18 @@
 {
     public class Order
     {
-        private DrinksAvailable coffee;
-        private int v1;
-        private double v2;
-        private bool v3;
-
-        public Order(DrinksAvailable drink, int nbSugar)
+        public Order(Drink drink, int nbSugar)
         {
             this.Drink = drink;
             this.NbSugar = nbSugar;
         }
 
-        public Order(DrinksAvailable drink, int nbSugar, double moneyGiven) : this(drink, nbSugar)
+        public Order(Drink drink, int nbSugar, double moneyGiven) : this(drink, nbSugar)
         {
             MoneyGiven = moneyGiven;
         }
 
-        public Order(DrinksAvailable drink, int nbSugar, double moneyGiven, bool isExtraHot) : this(drink, nbSugar, moneyGiven)
+        public Order(Drink drink, int nbSugar, double moneyGiven, bool isExtraHot) : this(drink, nbSugar, moneyGiven)
         {
             IsExtraHot = isExtraHot;
         }
@@ -29,6 +24,6 @@
 
         public int NbSugar { get; }
 
-        public DrinksAvailable Drink { get; }
+        public Drink Drink { get; }
     }
 }

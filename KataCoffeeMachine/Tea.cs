@@ -1,4 +1,6 @@
-﻿namespace KataCoffeeMachine
+﻿using System;
+
+namespace KataCoffeeMachine
 {
     public class Tea : Drink
 

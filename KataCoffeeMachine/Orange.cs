@@ -1,4 +1,6 @@
-﻿namespace KataCoffeeMachine
+﻿using System;
+
+namespace KataCoffeeMachine
 {
     public class Orange : Drink
     {
@@ -8,5 +10,6 @@
             Code = 'O';
             DrinkType = DrinksAvailable.Orange;
         }
+
     }
 }

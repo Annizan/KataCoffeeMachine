@@ -36,31 +36,25 @@ namespace KataCoffeeMachine
 
         public string GetCodeToSend(Order order)
         {
+            var drink = order.Drink;
 
-            var drinkOredered = drinks.Find(u => u.DrinkType == order.Drink);
-            if (IsEnoughMoneyInsert(order, drinkOredered))
+            if (drink.IsEnoughMoneyInsert(order.MoneyGiven))
             {
-
                 var code = new StringBuilder();
-                code.Append($"{drinks.Find(u => u.DrinkType == order.Drink).Code}");
+                code.Append($"{drink.Code}");
                 if (order.IsExtraHot)
                     code.Append("h");
                 code.Append(":");
                 code.Append(order.NbSugar > 0 ? $"{order.NbSugar}:0" : ":");
 
-                sellRegister.AddSell(drinkOredered.DrinkType);
+                sellRegister.AddSell(drink);
 
                 return code.ToString();
 
             }
 
-            var difference = drinkOredered.Price - order.MoneyGiven;
+            var difference = drink.HowMuchIsMissing(order.MoneyGiven);
             return GetMessageToSend($"Not enough money, {difference} missing.");
-        }
-
-        private static bool IsEnoughMoneyInsert(Order order, Drink drinkOredered)
-        {
-            return order.MoneyGiven >= drinkOredered.Price;
         }
 
         public string GetMessageToSend(string message)
@@ -68,7 +62,7 @@ namespace KataCoffeeMachine
             return $"M:{message}";
         }
 
-        public string GetNumberSell(DrinksAvailable drink)
+        public string GetNumberSell(Drink drink)
         {
             return sellRegister.GetNumberSell(drink);
         }
@@ -80,13 +74,6 @@ namespace KataCoffeeMachine
 
         public string GetBenefits()
         {
-            //double benefits = 0;
-            //foreach (DrinksAvailable drinkType in Enum.GetValues(typeof(DrinksAvailable)))
-            //{
-            //    benefits += sellshistory[drinkType] * drinks.Find(u => u.DrinkType == drinkType).Price;
-            //}
-
-            //return benefits.ToString();
             return sellRegister.GetBenefits(drinks);
         }
     }

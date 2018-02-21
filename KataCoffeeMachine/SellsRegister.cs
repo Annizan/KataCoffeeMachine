@@ -8,15 +8,15 @@ namespace KataCoffeeMachine
 {
     public class SellsRegister
     {
-        private readonly Dictionary<DrinksAvailable, int> sellshistory = new Dictionary<DrinksAvailable, int>
+        private readonly Dictionary<Drink, int> sellshistory = new Dictionary<Drink, int>
         {
-            {DrinksAvailable.Tea, 0},
-            {DrinksAvailable.Chocolate, 0 },
-            {DrinksAvailable.Coffee, 0 },
-            {DrinksAvailable.Orange, 0 }
+            {new Tea(), 0},
+            {new Chocolate(), 0 },
+            {new Coffee(), 0 },
+            {new Orange(), 0 }
         };
 
-        public string GetNumberSell(DrinksAvailable drink)
+        public string GetNumberSell(Drink drink)
         {
             return sellshistory[drink].ToString();
         }
@@ -24,15 +24,15 @@ namespace KataCoffeeMachine
         public string GetGlobalSells()
         {
             var globalSells = new StringBuilder();
-            foreach (DrinksAvailable drinkType in Enum.GetValues(typeof(DrinksAvailable)))
+            foreach (var drinkSells in sellshistory)
             {
-                globalSells.Append($"{drinkType}: {sellshistory[drinkType]} ");
+                globalSells.Append($"{drinkSells.Key.Code}: {drinkSells.Value}, ");
             }
 
             return globalSells.ToString();
         }
 
-        public void AddSell(DrinksAvailable drinkType)
+        public void AddSell(Drink drinkType)
         {
             sellshistory[drinkType]++;
         }
@@ -40,9 +40,9 @@ namespace KataCoffeeMachine
         public string GetBenefits(List<Drink> drinks)
         {
             double benefits = 0;
-            foreach (DrinksAvailable drinkType in Enum.GetValues(typeof(DrinksAvailable)))
+            foreach (var drinkType in sellshistory)
             {
-                benefits += sellshistory[drinkType] * drinks.Find(u => u.DrinkType == drinkType).Price;
+                benefits += drinkType.Value * drinkType.Key.Price;
             }
 
             return benefits.ToString();
