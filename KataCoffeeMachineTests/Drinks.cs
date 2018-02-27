@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using KataCoffeeMachine;
+using KataCoffeeMachine.Drinks;
 
 namespace KataCoffeeMachineTests
 {

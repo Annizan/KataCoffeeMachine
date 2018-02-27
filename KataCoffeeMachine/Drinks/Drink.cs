@@ -1,4 +1,4 @@
-﻿namespace KataCoffeeMachine
+﻿namespace KataCoffeeMachine.Drinks
 {
     public abstract class Drink
     {

@@ -1,4 +1,5 @@
 ﻿using KataCoffeeMachine;
+using KataCoffeeMachine.Drinks;
 using NFluent;
 using NUnit.Framework;
 

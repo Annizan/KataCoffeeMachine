@@ -1,4 +1,6 @@
-﻿namespace KataCoffeeMachine
+﻿using KataCoffeeMachine.Drinks;
+
+namespace KataCoffeeMachine
 {
     public class Order
     {
